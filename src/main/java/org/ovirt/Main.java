@@ -18,7 +18,7 @@ public class Main {
 		System.out.println("start");
 
 		// file path to your KubeConfig
-	    String kubeConfigPath = "/Users/ahadas/.kube/config";
+	    String kubeConfigPath = "/home/ahadas/.kube/.kubeconfig";
 
 	    // loading the out-of-cluster config, a kubeconfig from file-system
 	    ApiClient client =

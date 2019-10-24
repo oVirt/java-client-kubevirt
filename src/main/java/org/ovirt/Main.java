@@ -75,10 +75,12 @@ public class Main {
 	    }*/
 
 
+	namespace = "";
 	Watch<LinkedTreeMap> watch2 =
 	    Watch.createWatch(
 			      client,
-			      apiInstance.listNamespacedCustomObjectCall(group, version, namespace, plural, pretty, null, null, null, null, Boolean.TRUE, null, null),
+			      //apiInstance.listNamespacedCustomObjectCall(group, version, namespace, plural, pretty, null, null, null, null, Boolean.TRUE, null, null),
+			      apiInstance.listClusterCustomObjectCall(group, version, plural, pretty, null, null, null, null, Boolean.TRUE, null, null),
 			      new TypeToken<Watch.Response<LinkedTreeMap>>() {}.getType());
 	try {
 	    for (Watch.Response<LinkedTreeMap> item : watch2) {

@@ -4,7 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import io.kubernetes.client.util.Watch;
 import io.kubernetes.client.ApiClient;
 import io.kubernetes.client.ApiException;
 import io.kubernetes.client.Configuration;
@@ -14,6 +16,9 @@ import io.kubernetes.client.models.V1PodList;
 import io.kubernetes.client.util.ClientBuilder;
 import io.kubernetes.client.util.KubeConfig;
 import io.kubernetes.client.apis.CustomObjectsApi;
+
+import com.google.gson.internal.LinkedTreeMap;
+import com.google.gson.reflect.TypeToken;
 
 public class Main {
 
@@ -50,10 +55,13 @@ public class Main {
 	String fieldSelector = null; //"fieldSelector_example"; // String | A selector to restrict the list of returned objects by their fields. Defaults to everything.
 	String labelSelector = null; //"labelSelector_example"; // String | A selector to restrict the list of returned objects by their labels. Defaults to everything.
 	String resourceVersion = null;//"263558"; // String | When specified with a watch call, shows changes that occur after that particular version of a resource. Defaults to changes from the beginning of history. When specified for list: - if unset, then the result is returned from remote storage based on quorum-read flag; - if it's 0, then we simply return what we currently have in cache, no guarantee; - if set to non zero, then the result is at least as fresh as given rv.
-	Integer timeoutSeconds = 20; // Integer | Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
+	Integer timeoutSeconds = 0; // Integer | Timeout for the list/watch call. This limits the duration of the call, regardless of any activity or inactivity.
 	Boolean watch = false; // Boolean | Watch for changes to the described resources and return them as a stream of add, update, and remove notifications.
 	String namespace = "default";
-	try {
+	System.out.println("watch: " + watch);
+	client.getHttpClient().setReadTimeout(0, TimeUnit.SECONDS); // infinite timeout
+
+	/*	try {
 	    Map result = (Map) apiInstance.listNamespacedCustomObject(group, version, namespace, plural, pretty, fieldSelector, labelSelector, resourceVersion, timeoutSeconds, watch);
 	    System.out.println(result.getClass().getName());
     	    List items = (List) result.get("items");
@@ -64,6 +72,20 @@ public class Main {
 	    System.err.println("Exception when calling CustomObjectsApi#listClusterCustomObject");
 	    System.out.println(e.getMessage());
 	    e.printStackTrace();
+	    }*/
+
+
+	Watch<LinkedTreeMap> watch2 =
+	    Watch.createWatch(
+			      client,
+			      apiInstance.listNamespacedCustomObjectCall(group, version, namespace, plural, pretty, null, null, null, null, Boolean.TRUE, null, null),
+			      new TypeToken<Watch.Response<LinkedTreeMap>>() {}.getType());
+	try {
+	    for (Watch.Response<LinkedTreeMap> item : watch2) {
+		System.out.printf("%s : %s%n", item.type, item.object);
+	    }
+	} finally {
+	    watch2.close();
 	}
     }
 }

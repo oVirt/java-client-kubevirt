@@ -11,6 +11,7 @@ import io.kubernetes.client.ApiClient;
 import io.kubernetes.client.ApiException;
 import io.kubernetes.client.Configuration;
 import io.kubernetes.client.apis.CoreV1Api;
+import io.kubernetes.client.models.V1NodeList;
 import io.kubernetes.client.models.V1Pod;
 import io.kubernetes.client.models.V1PodList;
 import io.kubernetes.client.util.ClientBuilder;
@@ -74,6 +75,10 @@ public class Main {
 	    e.printStackTrace();
 	    }*/
 
+	Configuration.setDefaultApiClient(client);
+
+	//l = api.listNode(null, null, null, null, 0, rv, 3, false);
+	//System.out.println(l);
 
 	namespace = "";
 	Watch<LinkedTreeMap> watch2 =

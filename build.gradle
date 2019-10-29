@@ -10,11 +10,27 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     id 'java-library'
     id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'maven-publish'
+}
+
+group = "io.kubernetes"
+version = "0.0.2"
+
+shadowJar {
+    classifier = null
+}
+
+
+uploadShadow {
+  repositories {
+    mavenLocal()
+  }
 }
 
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
+    mavenLocal()
     jcenter()
 }
 

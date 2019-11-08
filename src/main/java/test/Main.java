@@ -1,38 +1,91 @@
 package test;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
-import io.kubernetes.client.util.Watch;
-import io.kubernetes.client.ApiClient;
-import io.kubernetes.client.ApiException;
-import io.kubernetes.client.Configuration;
-import io.kubernetes.client.apis.CoreV1Api;
-import io.kubernetes.client.models.V1NodeList;
-import io.kubernetes.client.models.V1Pod;
-import io.kubernetes.client.models.V1PodList;
-import io.kubernetes.client.util.ClientBuilder;
-import io.kubernetes.client.util.KubeConfig;
-import io.kubernetes.client.apis.CustomObjectsApi;
 
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
+import io.kubernetes.client.ApiClient;
+import io.kubernetes.client.ApiException;
+import io.kubernetes.client.apis.CoreV1Api;
+import io.kubernetes.client.apis.CustomObjectsApi;
+import io.kubernetes.client.models.V1Pod;
+import io.kubernetes.client.models.V1PodList;
+import io.kubernetes.client.util.ClientBuilder;
+import io.kubernetes.client.util.KubeConfig;
+import io.kubernetes.client.util.Watch;
+
 public class Main {
 
+	public static KubeConfig getConfigFromToken(String url, String token) {
+		Map<String, String> tkn = new HashMap<String, String>();
+		tkn.put("token", token);
+
+		return getConfig(url, tkn);
+	}
+
+	// Basic auth needs to be enabled in the cluster
+	private static KubeConfig getConfigFromCreds(String url, String username, String password) {
+		Map<String, String> creds = new HashMap<String, String>();
+		creds.put("username", username);
+		creds.put("password", password);
+
+		return getConfig(url, creds);
+	}
+
+	private static KubeConfig getConfig(String url, Map<String, String> usr) {
+		String clusterName = "cluster";
+		String userName = "user";
+		String ctxName = "ctx";
+
+		ArrayList<Object> contexts = new ArrayList<Object>();
+		Map<String, Object> ctx = new HashMap<String, Object>();
+		Map<String, Object> def = new HashMap<String, Object>();
+		def.put("cluster", clusterName);
+		def.put("user", userName);
+		ctx.put("context", def);
+		ctx.put("name", ctxName);
+		contexts.add(ctx);
+
+		ArrayList<Object> clusters = new ArrayList<Object>();
+		Map<String, Object> cluster = new HashMap<String, Object>();
+		cluster.put("name", clusterName);
+		Map<String, Object> conf = new HashMap<String, Object>();
+		conf.put("insecure-skip-tls-verify", Boolean.TRUE);
+		conf.put("server", url);
+		cluster.put("cluster", conf);
+		clusters.add(cluster);
+
+		ArrayList<Object> users = new ArrayList<Object>();
+		Map<String, Object> user = new HashMap<String, Object>();
+		user.put("name", userName);
+
+		user.put("user", usr);
+		users.add(user);
+
+		KubeConfig kubeConfig = new KubeConfig(contexts, clusters, users);
+		kubeConfig.setContext(ctxName);
+
+		return kubeConfig;
+	}
+	
     public static void main(String[] args) throws IOException, ApiException  {
 	System.out.println("start");
 
-	// file path to your KubeConfig
-	String kubeConfigPath = "/home/ahadas/.kube/.kubeconfig";
+	if (args.length < 2) {
+	    System.err.println("Not enough arguments provided!");
+	    System.exit(-1);
+	}
 
-	// loading the out-of-cluster config, a kubeconfig from file-system
-	ApiClient client =
-	    ClientBuilder.kubeconfig(KubeConfig.loadKubeConfig(new FileReader(kubeConfigPath))).build();
-	Configuration.setDefaultApiClient(client);
+	String url = args[0];
+	String token = args[1];
+
+	// create config using url and token
+	ApiClient client = ClientBuilder.kubeconfig(getConfigFromToken(url, token)).build();
 	
 	CoreV1Api api = new CoreV1Api();
 	V1PodList list = api.listPodForAllNamespaces(null, null, null, null, null, null, null, null);
@@ -74,8 +127,6 @@ public class Main {
 	    System.out.println(e.getMessage());
 	    e.printStackTrace();
 	    }*/
-
-	Configuration.setDefaultApiClient(client);
 
 	//l = api.listNode(null, null, null, null, 0, rv, 3, false);
 	//System.out.println(l);

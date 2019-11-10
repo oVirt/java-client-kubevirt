@@ -13,43 +13,24 @@
 
 package kubevirt.io;
 
-import kubevirt.ApiCallback;
-import kubevirt.ApiClient;
-import kubevirt.ApiException;
-import kubevirt.ApiResponse;
-import kubevirt.Configuration;
-import kubevirt.Pair;
-import kubevirt.ProgressRequestBody;
-import kubevirt.ProgressResponseBody;
-
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
-
-
-import kubevirt.io.V1APIGroup;
-import kubevirt.io.V1APIGroupList;
-import kubevirt.io.V1APIResourceList;
-import kubevirt.io.V1DeleteOptions;
-import kubevirt.io.V1Patch;
-import kubevirt.io.V1Status;
-import kubevirt.io.V1VirtualMachine;
-import kubevirt.io.V1VirtualMachineInstance;
-import kubevirt.io.V1VirtualMachineInstanceList;
-import kubevirt.io.V1VirtualMachineInstanceMigration;
-import kubevirt.io.V1VirtualMachineInstanceMigrationList;
-import kubevirt.io.V1VirtualMachineInstancePreset;
-import kubevirt.io.V1VirtualMachineInstancePresetList;
-import kubevirt.io.V1VirtualMachineInstanceReplicaSet;
-import kubevirt.io.V1VirtualMachineInstanceReplicaSetList;
-import kubevirt.io.V1VirtualMachineList;
-import kubevirt.io.V1WatchEvent;
-
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.gson.reflect.TypeToken;
+
+import io.kubernetes.client.ApiCallback;
+import io.kubernetes.client.ApiClient;
+import io.kubernetes.client.ApiException;
+import io.kubernetes.client.ApiResponse;
+import io.kubernetes.client.Configuration;
+import io.kubernetes.client.Pair;
+import io.kubernetes.client.ProgressRequestBody;
+import io.kubernetes.client.ProgressResponseBody;
 
 public class DefaultApi {
     private ApiClient apiClient;

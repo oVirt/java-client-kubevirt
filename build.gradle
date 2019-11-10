@@ -13,8 +13,8 @@ plugins {
     id 'maven-publish'
 }
 
-group = "io.kubernetes"
-version = "0.0.2"
+group = "io.kubevirt"
+version = "0.0.1"
 
 shadowJar {
     classifier = null

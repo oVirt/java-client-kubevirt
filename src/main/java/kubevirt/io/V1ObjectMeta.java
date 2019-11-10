@@ -14,6 +14,9 @@
 package kubevirt.io;
 
 import java.util.Objects;
+
+import org.joda.time.DateTime;
+
 import java.util.Arrays;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -39,6 +42,9 @@ public class V1ObjectMeta {
 
   @SerializedName("clusterName")
   private String clusterName = null;
+
+  @SerializedName("creationTimestamp")
+  private DateTime creationTimestamp = null;
 
   @SerializedName("deletionGracePeriodSeconds")
   private Long deletionGracePeriodSeconds = null;
@@ -115,9 +121,13 @@ public class V1ObjectMeta {
     this.clusterName = clusterName;
   }
 
-  public V1ObjectMeta deletionGracePeriodSeconds(Long deletionGracePeriodSeconds) {
-    this.deletionGracePeriodSeconds = deletionGracePeriodSeconds;
-    return this;
+  @ApiModelProperty(value = "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.  Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata")
+  public DateTime getCreationTimestamp() {
+    return creationTimestamp;
+  }
+
+  public void setCreationTimestamp(DateTime creationTimestamp) {
+    this.creationTimestamp = creationTimestamp;
   }
 
    /**

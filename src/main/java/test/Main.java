@@ -1,4 +1,4 @@
-package org.ovirt;
+package test;
 
 import java.io.FileReader;
 import java.io.IOException;

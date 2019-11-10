@@ -32,14 +32,14 @@ import io.kubernetes.client.Pair;
 import io.kubernetes.client.ProgressRequestBody;
 import io.kubernetes.client.ProgressResponseBody;
 
-public class DefaultApi {
+public class KubevirtApi {
     private ApiClient apiClient;
 
-    public DefaultApi() {
+    public KubevirtApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public DefaultApi(ApiClient apiClient) {
+    public KubevirtApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 

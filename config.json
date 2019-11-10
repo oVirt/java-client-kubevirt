@@ -1,0 +1,6 @@
+{
+  "modelPackage": "kubevirt.io",
+  "apiPackage": "kubevirt.io",
+  "groupId": "io.kubevirt",
+  "artifactId": "client-java"
+}

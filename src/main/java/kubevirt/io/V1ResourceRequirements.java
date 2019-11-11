@@ -13,16 +13,13 @@
 
 package kubevirt.io;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Arrays;
-import com.google.gson.TypeAdapter;
-import com.google.gson.annotations.JsonAdapter;
+
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import io.swagger.annotations.ApiModel;
+
 import io.swagger.annotations.ApiModelProperty;
-import java.io.IOException;
 
 /**
  * V1ResourceRequirements
@@ -30,17 +27,25 @@ import java.io.IOException;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-10T14:44:51.030+02:00")
 public class V1ResourceRequirements {
   @SerializedName("limits")
-  private Object limits = null;
+  private Map<String, String> limits = null;
 
   @SerializedName("overcommitGuestOverhead")
   private Boolean overcommitGuestOverhead = null;
 
   @SerializedName("requests")
-  private Object requests = null;
+  private Map<String, String> requests = null;
 
-  public V1ResourceRequirements limits(Object limits) {
+  public V1ResourceRequirements limits(Map<String, String> limits) {
     this.limits = limits;
     return this;
+  }
+
+  public V1ResourceRequirements putLimitsItem(String key, String limitsItem) {
+      if (this.limits == null) {
+          this.limits = new HashMap<>();
+      }
+      this.limits.put(key, limitsItem);
+      return this;
   }
 
    /**
@@ -48,11 +53,11 @@ public class V1ResourceRequirements {
    * @return limits
   **/
   @ApiModelProperty(value = "Limits describes the maximum amount of compute resources allowed. Valid resource keys are \"memory\" and \"cpu\". +optional")
-  public Object getLimits() {
+  public Map<String, String> getLimits() {
     return limits;
   }
 
-  public void setLimits(Object limits) {
+  public void setLimits(Map<String, String> limits) {
     this.limits = limits;
   }
 
@@ -74,7 +79,7 @@ public class V1ResourceRequirements {
     this.overcommitGuestOverhead = overcommitGuestOverhead;
   }
 
-  public V1ResourceRequirements requests(Object requests) {
+  public V1ResourceRequirements requests(Map<String, String> requests) {
     this.requests = requests;
     return this;
   }
@@ -84,14 +89,21 @@ public class V1ResourceRequirements {
    * @return requests
   **/
   @ApiModelProperty(value = "Requests is a description of the initial vmi resources. Valid resource keys are \"memory\" and \"cpu\". +optional")
-  public Object getRequests() {
+  public Map<String, String> getRequests() {
     return requests;
   }
 
-  public void setRequests(Object requests) {
+  public void setRequests(Map<String, String> requests) {
     this.requests = requests;
   }
 
+  public V1ResourceRequirements putRequestsItem(String key, String requestsItem) {
+      if (this.requests == null) {
+          this.requests = new HashMap<>();
+      }
+      this.requests.put(key, requestsItem);
+      return this;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {

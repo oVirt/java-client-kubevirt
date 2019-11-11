@@ -10,6 +10,8 @@ import io.kubernetes.client.util.ClientBuilder;
 import io.kubernetes.client.util.KubeConfig;
 import kubevirt.io.KubevirtApi;
 import kubevirt.io.V1VirtualMachine;
+import kubevirt.io.V1VirtualMachineInstance;
+import kubevirt.io.V1VirtualMachineInstanceList;
 import kubevirt.io.V1VirtualMachineList;
 
 public class VirtualMachines {
@@ -45,7 +47,11 @@ public class VirtualMachines {
 //		V1VirtualMachine v1 = new V1VirtualMachine();
 		v.getMetadata().setResourceVersion(null);
 		v.getMetadata().setName("arik");
-		api.createNamespacedVirtualMachine(v, "default");
+//		api.createNamespacedVirtualMachine(v, "default");
+
+		V1VirtualMachineInstanceList l2 = api.listVirtualMachineInstanceForAllNamespaces(null, null, null, null, null, null, null, null);
+		System.out.println("VMIs: " + l2);
+		V1VirtualMachineInstance v3 = l2.getItems().get(0);
 	}
 
 }

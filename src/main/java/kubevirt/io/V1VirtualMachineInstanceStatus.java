@@ -59,7 +59,7 @@ public class V1VirtualMachineInstanceStatus {
   private String phase = null;
 
   @SerializedName("qosClass")
-  private V1PodQOSClass qosClass = null;
+  private String qosClass = null;
 
   @SerializedName("reason")
   private String reason = null;
@@ -206,7 +206,7 @@ public class V1VirtualMachineInstanceStatus {
     this.phase = phase;
   }
 
-  public V1VirtualMachineInstanceStatus qosClass(V1PodQOSClass qosClass) {
+  public V1VirtualMachineInstanceStatus qosClass(String qosClass) {
     this.qosClass = qosClass;
     return this;
   }
@@ -216,11 +216,11 @@ public class V1VirtualMachineInstanceStatus {
    * @return qosClass
   **/
   @ApiModelProperty(value = "The Quality of Service (QOS) classification assigned to the virtual machine instance based on resource requirements See PodQOSClass type for available QOS classes More info: https://git.k8s.io/community/contributors/design-proposals/node/resource-qos.md +optional")
-  public V1PodQOSClass getQosClass() {
+  public String getQosClass() {
     return qosClass;
   }
 
-  public void setQosClass(V1PodQOSClass qosClass) {
+  public void setQosClass(String qosClass) {
     this.qosClass = qosClass;
   }
 

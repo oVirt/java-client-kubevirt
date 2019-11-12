@@ -87,7 +87,7 @@ public class Main {
 	// create config using url and token
 	ApiClient client = ClientBuilder.kubeconfig(getConfigFromToken(url, token)).build();
 	
-	CoreV1Api api = new CoreV1Api();
+	CoreV1Api api = new CoreV1Api(client);
 	V1PodList list = api.listPodForAllNamespaces(null, null, null, null, null, null, null, null);
 	System.out.println("Pods:");
 	for (V1Pod item : list.getItems()) {

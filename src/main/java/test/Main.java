@@ -101,7 +101,7 @@ public class Main {
 	}*/
 
 	System.out.println("\nVirtual Machines:");
-	CustomObjectsApi apiInstance = new CustomObjectsApi();
+	CustomObjectsApi apiInstance = new CustomObjectsApi(client);
 	String group = "kubevirt.io"; // String | The custom resource's group name
 	String version = "v1alpha3"; // String | The custom resource's version
 	String plural = "virtualmachines"; // String | The custom resource's plural name. For TPRs this would be lowercase plural kind.

@@ -1,32 +1,33 @@
 package test;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import io.kubernetes.client.util.Watch;
+import com.google.gson.reflect.TypeToken;
+
 import io.kubernetes.client.ApiClient;
 import io.kubernetes.client.ApiException;
-import io.kubernetes.client.Configuration;
 import io.kubernetes.client.apis.CoreV1Api;
-import io.kubernetes.client.models.V1Node;
 import io.kubernetes.client.models.V1NodeList;
 import io.kubernetes.client.util.ClientBuilder;
-import io.kubernetes.client.util.KubeConfig;
-
-import com.google.gson.reflect.TypeToken;
+import io.kubernetes.client.util.Watch;
 
 class Nodes {
 
     public static void main(String[] args) throws IOException, ApiException {
 	System.out.println("monitoring nodes");
-	// file path to your KubeConfig
-        String kubeConfigPath = "/home/ahadas/.kube/.kubeconfig";
-	// loading the out-of-cluster config, a kubeconfig from file-system
-        ApiClient client =
-            ClientBuilder.kubeconfig(KubeConfig.loadKubeConfig(new FileReader(kubeConfigPath))).build();
+
+    if (args.length < 2) {
+        System.err.println("Not enough arguments provided!");
+        System.exit(-1);
+    }
+
+    String url = args[0];
+    String token = args[1];
+	
+	// create config using url and token
+	ApiClient client = ClientBuilder.kubeconfig(Main.getConfigFromToken(url, token)).build();
 	client.getHttpClient().setReadTimeout(0, TimeUnit.MILLISECONDS);
-        Configuration.setDefaultApiClient(client);
       
 	CoreV1Api api = new CoreV1Api();
 	//V1NodeList nodes =

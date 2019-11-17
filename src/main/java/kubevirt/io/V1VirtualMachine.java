@@ -40,7 +40,7 @@ public class V1VirtualMachine {
   private String kind = null;
 
   @SerializedName("metadata")
-  private V1ObjectMeta metadata = null;
+  private io.kubernetes.client.models.V1ObjectMeta metadata = null;
 
   @SerializedName("spec")
   private V1VirtualMachineSpec spec = null;
@@ -84,7 +84,7 @@ public class V1VirtualMachine {
     this.kind = kind;
   }
 
-  public V1VirtualMachine metadata(V1ObjectMeta metadata) {
+  public V1VirtualMachine metadata(io.kubernetes.client.models.V1ObjectMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -94,11 +94,11 @@ public class V1VirtualMachine {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-  public V1ObjectMeta getMetadata() {
+  public io.kubernetes.client.models.V1ObjectMeta getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(V1ObjectMeta metadata) {
+  public void setMetadata(io.kubernetes.client.models.V1ObjectMeta metadata) {
     this.metadata = metadata;
   }
 

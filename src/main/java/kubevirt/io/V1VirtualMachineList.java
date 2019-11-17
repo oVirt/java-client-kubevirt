@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import kubevirt.io.V1ListMeta;
 import kubevirt.io.V1VirtualMachine;
 
 /**
@@ -44,7 +43,7 @@ public class V1VirtualMachineList {
   private String kind = null;
 
   @SerializedName("metadata")
-  private V1ListMeta metadata = null;
+  private io.kubernetes.client.models.V1ListMeta metadata = null;
 
   public V1VirtualMachineList apiVersion(String apiVersion) {
     this.apiVersion = apiVersion;
@@ -105,7 +104,7 @@ public class V1VirtualMachineList {
     this.kind = kind;
   }
 
-  public V1VirtualMachineList metadata(V1ListMeta metadata) {
+  public V1VirtualMachineList metadata(io.kubernetes.client.models.V1ListMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -115,11 +114,11 @@ public class V1VirtualMachineList {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-  public V1ListMeta getMetadata() {
+  public io.kubernetes.client.models.V1ListMeta getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(V1ListMeta metadata) {
+  public void setMetadata(io.kubernetes.client.models.V1ListMeta metadata) {
     this.metadata = metadata;
   }
 

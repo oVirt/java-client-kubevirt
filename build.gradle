@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "io.kubevirt"
-version = "0.0.5"
+version = "0.0.6"
 
 shadowJar {
     classifier = null

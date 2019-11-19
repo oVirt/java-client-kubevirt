@@ -18,6 +18,11 @@ version = "0.0.5"
 
 shadowJar {
     classifier = null
+    dependencies {
+        exclude(dependency {
+            it.moduleGroup == 'io.sundr'
+        })
+    }
 }
 
 

@@ -20,10 +20,11 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import io.kubernetes.client.models.V1ObjectMeta;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import kubevirt.io.V1ObjectMeta;
 import kubevirt.io.V1VirtualMachineSpec;
 import kubevirt.io.V1VirtualMachineStatus;
 
@@ -40,7 +41,7 @@ public class V1VirtualMachine {
   private String kind = null;
 
   @SerializedName("metadata")
-  private io.kubernetes.client.models.V1ObjectMeta metadata = null;
+  private V1ObjectMeta metadata = null;
 
   @SerializedName("spec")
   private V1VirtualMachineSpec spec = null;
@@ -84,7 +85,7 @@ public class V1VirtualMachine {
     this.kind = kind;
   }
 
-  public V1VirtualMachine metadata(io.kubernetes.client.models.V1ObjectMeta metadata) {
+  public V1VirtualMachine metadata(V1ObjectMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -94,11 +95,11 @@ public class V1VirtualMachine {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-  public io.kubernetes.client.models.V1ObjectMeta getMetadata() {
+  public V1ObjectMeta getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(io.kubernetes.client.models.V1ObjectMeta metadata) {
+  public void setMetadata(V1ObjectMeta metadata) {
     this.metadata = metadata;
   }
 

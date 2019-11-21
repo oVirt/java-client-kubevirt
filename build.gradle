@@ -14,13 +14,14 @@ plugins {
 }
 
 group = "io.kubevirt"
-version = "0.0.6"
+version = "0.0.7"
 
 shadowJar {
     classifier = null
     dependencies {
         exclude(dependency {
             it.moduleGroup == 'io.sundr'
+            it.moduleGroup == 'org.bouncycastle'
         })
     }
 }

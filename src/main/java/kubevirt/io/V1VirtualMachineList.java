@@ -20,6 +20,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+
+import io.kubernetes.client.models.V1ListMeta;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -43,7 +45,7 @@ public class V1VirtualMachineList {
   private String kind = null;
 
   @SerializedName("metadata")
-  private io.kubernetes.client.models.V1ListMeta metadata = null;
+  private V1ListMeta metadata = null;
 
   public V1VirtualMachineList apiVersion(String apiVersion) {
     this.apiVersion = apiVersion;
@@ -104,7 +106,7 @@ public class V1VirtualMachineList {
     this.kind = kind;
   }
 
-  public V1VirtualMachineList metadata(io.kubernetes.client.models.V1ListMeta metadata) {
+  public V1VirtualMachineList metadata(V1ListMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -114,11 +116,11 @@ public class V1VirtualMachineList {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-  public io.kubernetes.client.models.V1ListMeta getMetadata() {
+  public V1ListMeta getMetadata() {
     return metadata;
   }
 
-  public void setMetadata(io.kubernetes.client.models.V1ListMeta metadata) {
+  public void setMetadata(V1ListMeta metadata) {
     this.metadata = metadata;
   }
 

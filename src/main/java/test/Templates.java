@@ -52,14 +52,14 @@ public class Templates {
         SharedIndexInformer<V1Template> templateInfomer =
                 sharedInformerFactory.sharedIndexInformerFor(
                         (CallGeneratorParams params) -> {
-                            return api.listNamespacedCustomObjectCall(
+                            return api.listClusterCustomObjectCall(
                                     "template.openshift.io",
                                     "v1",
-                                    "default",
+//                                    "default",
                                     "templates",
                                     null,
                                     null,
-                                    null,
+                                    "template.kubevirt.io/type",
                                     params.resourceVersion,
                                     params.timeoutSeconds,
                                     params.watch,

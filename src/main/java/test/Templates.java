@@ -17,6 +17,7 @@ import io.kubernetes.client.util.CallGeneratorParams;
 import io.kubernetes.client.util.ClientBuilder;
 import kubevirt.io.KubevirtApi;
 import kubevirt.io.V1VirtualMachine;
+import openshift.io.OpenshiftApi;
 import openshift.io.V1Template;
 import openshift.io.V1TemplateList;
 
@@ -47,19 +48,17 @@ public class Templates {
             return;
         }
 
-        CustomObjectsApi api = new CustomObjectsApi(client);
+        OpenshiftApi api = new OpenshiftApi(client);
         SharedInformerFactory sharedInformerFactory = new SharedInformerFactory();
         SharedIndexInformer<V1Template> templateInfomer =
                 sharedInformerFactory.sharedIndexInformerFor(
                         (CallGeneratorParams params) -> {
-                            return api.listClusterCustomObjectCall(
-                                    "template.openshift.io",
-                                    "v1",
-//                                    "default",
-                                    "templates",
+                            return api.listKubevirtTemplateForAllNamespacesCall(
                                     null,
                                     null,
-                                    "template.kubevirt.io/type",
+                                    null,
+                                    null,
+                                    null,
                                     params.resourceVersion,
                                     params.timeoutSeconds,
                                     params.watch,

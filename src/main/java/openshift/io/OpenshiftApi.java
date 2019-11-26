@@ -37,14 +37,14 @@ public class OpenshiftApi {
         this.apiClient = apiClient;
     }
 
-    public V1VirtualMachineList listNamespacedRoute(String namespace, String _continue, String fieldSelector, Boolean includeUninitialized, String labelSelector, Integer limit, String resourceVersion, Integer timeoutSeconds, Boolean watch) throws ApiException {
-        ApiResponse<V1VirtualMachineList> resp = listNamespacedRouteWithHttpInfo(namespace, _continue, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch);
+    public V1RouteList listNamespacedRoute(String namespace, String _continue, String fieldSelector, Boolean includeUninitialized, String labelSelector, Integer limit, String resourceVersion, Integer timeoutSeconds, Boolean watch) throws ApiException {
+        ApiResponse<V1RouteList> resp = listNamespacedRouteWithHttpInfo(namespace, _continue, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch);
         return resp.getData();
     }
 
-    public ApiResponse<V1VirtualMachineList> listNamespacedRouteWithHttpInfo(String namespace, String _continue, String fieldSelector, Boolean includeUninitialized, String labelSelector, Integer limit, String resourceVersion, Integer timeoutSeconds, Boolean watch) throws ApiException {
+    public ApiResponse<V1RouteList> listNamespacedRouteWithHttpInfo(String namespace, String _continue, String fieldSelector, Boolean includeUninitialized, String labelSelector, Integer limit, String resourceVersion, Integer timeoutSeconds, Boolean watch) throws ApiException {
         com.squareup.okhttp.Call call = listNamespacedRouteValidateBeforeCall(namespace, _continue, fieldSelector, includeUninitialized, labelSelector, limit, resourceVersion, timeoutSeconds, watch, null, null);
-        Type localVarReturnType = new TypeToken<V1VirtualMachineList>(){}.getType();
+        Type localVarReturnType = new TypeToken<V1RouteList>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 

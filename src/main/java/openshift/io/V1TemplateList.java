@@ -1,4 +1,4 @@
-package kubevirt.io;
+package openshift.io;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -112,7 +112,7 @@ public class V1TemplateList {
       }
       V1TemplateList templateList = (V1TemplateList) o;
       return Objects.equals(this.apiVersion, templateList.apiVersion) &&
-          Objects.equals(this.items, templateList.items) &&
+//          Objects.equals(this.items, templateList.items) &&
           Objects.equals(this.kind, templateList.kind) &&
           Objects.equals(this.metadata, templateList.metadata);
     }

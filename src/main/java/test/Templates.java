@@ -16,9 +16,9 @@ import io.kubernetes.client.informer.SharedInformerFactory;
 import io.kubernetes.client.util.CallGeneratorParams;
 import io.kubernetes.client.util.ClientBuilder;
 import kubevirt.io.KubevirtApi;
-import kubevirt.io.V1Template;
-import kubevirt.io.V1TemplateList;
 import kubevirt.io.V1VirtualMachine;
+import openshift.io.V1Template;
+import openshift.io.V1TemplateList;
 
 public class Templates {
 

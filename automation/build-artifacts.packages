@@ -1,0 +1,12 @@
+autoconf
+automake
+gcc
+git
+dnf-utils
+java-11-openjdk-devel
+maven
+maven-compiler-plugin
+maven-javadoc-plugin
+maven-local
+maven-shade-plugin
+maven-source-plugin

@@ -1,0 +1,11 @@
+autoconf
+automake
+git
+java-1.8.0-openjdk-headless
+java-11-openjdk-devel
+rh-maven35-maven
+rh-maven35-maven-javadoc
+rh-maven35-maven-local
+rh-maven35-maven-shade-plugin
+rh-maven35-maven-source-plugin
+yum-utils

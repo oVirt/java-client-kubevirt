@@ -5,3 +5,10 @@
 build
 
 _out
+/target/
+/aclocal.m4
+/compile
+/configure
+/install-sh
+/pom.xml
+/autom4te.cache/

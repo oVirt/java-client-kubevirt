@@ -108,11 +108,11 @@ public class V1RouteList {
       if (o == null || getClass() != o.getClass()) {
         return false;
       }
-      V1RouteList templateList = (V1RouteList) o;
-      return Objects.equals(this.apiVersion, templateList.apiVersion) &&
-//          Objects.equals(this.items, templateList.items) &&
-          Objects.equals(this.kind, templateList.kind) &&
-          Objects.equals(this.metadata, templateList.metadata);
+      V1RouteList routeList = (V1RouteList) o;
+      return Objects.equals(this.apiVersion, routeList.apiVersion) &&
+//          Objects.equals(this.items, routeList.items) &&
+          Objects.equals(this.kind, routeList.kind) &&
+          Objects.equals(this.metadata, routeList.metadata);
     }
 
     @Override
@@ -124,7 +124,7 @@ public class V1RouteList {
     @Override
     public String toString() {
       StringBuilder sb = new StringBuilder();
-      sb.append("class TemplateList {\n");
+      sb.append("class RouteList {\n");
       
       sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
       sb.append("    items: ").append(toIndentedString(items)).append("\n");

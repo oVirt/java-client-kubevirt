@@ -21,6 +21,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <name>kubevirt-client</name>
+  <description>Java based Kubevirt client library</description>
   <groupId>org.ovirt.@PACKAGE_NAME@</groupId>
   <artifactId>client-java</artifactId>
   <version>@PACKAGE_MAVEN_VERSION@@MAVEN_VERSION_SNAPSHOT@</version>
@@ -39,6 +41,36 @@
     <url>http://gerrit.ovirt.org/gitweb?p=@PACKAGE_NAME@.git</url>
   </scm>
   <packaging>jar</packaging>
+  <developers>
+    <developer>
+      <id>ahadas</id>
+      <name>Arik Hadas</name>
+      <email>ahadas@redhat.com</email>
+    </developer>
+    <developer>
+      <id>masayag</id>
+      <name>Moti Asayag</name>
+      <email>masayag@redhat.com</email>
+    </developer>
+    <developer>
+      <id>pkliczewski</id>
+      <name>Piotr Kliczewski</name>
+      <email>pkliczew@redhat.com</email>
+    </developer>
+  </developers>
+
+  <distributionManagement>
+    <snapshotRepository>
+      <id>sonatype-nexus-snapshots</id>
+      <name>Sonatype Nexus Snapshots</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>sonatype-nexus-staging</id>
+      <name>Nexus Release Repository</name>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,6 +97,40 @@
       <version>${io.gsonfire.version}</version>
     </dependency>
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>release-sign-artifacts</id>
+      <activation>
+        <property>
+        <name>performRelease</name>
+        <value>true</value>
+      </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+              <execution>
+                <id>sign-artifacts</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+                <configuration>
+                  <keyname>${gpg.keyname}</keyname>
+                  <passphrase>${gpg.passphrase}</passphrase>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 
   <build>
     <plugins>

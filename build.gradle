@@ -13,7 +13,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = "io.kubevirt"
+group = "org.ovirt.java-client-kubevirt"
 version = "0.0.10"
 
 shadowJar {

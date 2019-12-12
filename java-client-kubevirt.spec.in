@@ -87,7 +87,7 @@ export JAVA_HOME="%{_java_jdk_home}"
 %mvn_build -i -- %{?_mvn_opts}
 %endif
 
-%mvn_artifact dependency-reduced-pom.xml target/client-java-%{version}.jar
+%mvn_artifact dependency-reduced-pom.xml target/@PACKAGE_NAME@-%{version}.jar
 
 %install
 %mvn_install

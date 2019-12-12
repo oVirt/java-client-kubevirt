@@ -24,7 +24,7 @@
   <name>kubevirt-client</name>
   <description>Java based Kubevirt client library</description>
   <groupId>org.ovirt.@PACKAGE_NAME@</groupId>
-  <artifactId>client-java</artifactId>
+  <artifactId>@PACKAGE_NAME@</artifactId>
   <version>@PACKAGE_MAVEN_VERSION@@MAVEN_VERSION_SNAPSHOT@</version>
 
   <url>http://ovirt.org</url>

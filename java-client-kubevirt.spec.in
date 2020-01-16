@@ -54,8 +54,8 @@ BuildRequires:	rh-maven35-maven-shade-plugin
 BuildRequires:	rh-maven35-maven-source-plugin
 BuildRequires:  rh-maven35-maven-plugin-registry
 %else
+BuildRequires:	javapackages-local
 BuildRequires:	maven >= 3.5.0
-BuildRequires:	maven-local
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
 BuildRequires:  maven-compiler-plugin
@@ -79,7 +79,7 @@ java client kubevirt
 %endif
 
 %build
-%configure --with-maven --disable-java-build
+%configure --with-maven --disable-java-build MVN="xmvn"
 make %{?_smp_mflags}
 
 %if 0%{?rhel} != 7

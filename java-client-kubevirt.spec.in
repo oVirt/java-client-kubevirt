@@ -46,6 +46,7 @@ BuildRequires:	java-11-openjdk-devel >= 11.0.4
 %if 0%{?rhel} == 7
 BuildRequires:	java-1.8.0-openjdk-headless >= 1:1.8.0
 BuildRequires:	rh-maven35-maven
+BuildRequires:	rh-maven35-maven-compiler-plugin
 BuildRequires:	rh-maven35-maven-javadoc
 BuildRequires:	rh-maven35-maven-local
 BuildRequires:	rh-maven35-maven-shade-plugin
@@ -55,6 +56,7 @@ BuildRequires:	maven >= 3.5.0
 BuildRequires:	maven-local
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
+BuildRequires:  maven-compiler-plugin
 %endif
 
 # All are provided by our fat jar

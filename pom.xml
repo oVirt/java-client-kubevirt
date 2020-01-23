@@ -25,7 +25,7 @@
   <description>Java based Kubevirt client library</description>
   <groupId>org.ovirt.java-client-kubevirt</groupId>
   <artifactId>java-client-kubevirt</artifactId>
-  <version>0.1.0</version>
+  <version>0.2.0</version>
 
   <url>http://ovirt.org</url>
   <licenses>

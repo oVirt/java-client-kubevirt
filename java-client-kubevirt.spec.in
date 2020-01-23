@@ -105,5 +105,8 @@ export JAVA_HOME="%{_java_jdk_home}"
 %dir %{_javadir}/%{name}
 
 %changelog
+* Thu Jan 23 2020 Piotr Kliczewski <pkliczew@redhat.com> - 0.2.0
+- use brew maven-build
+
 * Mon Dec 2 2019 Piotr Kliczewski <pkliczew@redhat.com> - 0.1.0
 - Initial changes

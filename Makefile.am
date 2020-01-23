@@ -35,6 +35,7 @@ MAINTAINERCLEANFILES = \
 
 EXTRA_DIST = \
 	$(srcdir)/src/main/resources/toolchains.xml \
+	$(srcdir)/pom.xml \
 	.gitignore \
 	$(NULL)
 

@@ -105,6 +105,9 @@ export JAVA_HOME="%{_java_jdk_home}"
 %dir %{_javadir}/%{name}
 
 %changelog
+* Thu Feb 20 2020 Moti Asayag <masayag@redhat.com> - 0.3.0
+- Add support for network attachment definitions
+
 * Thu Jan 23 2020 Piotr Kliczewski <pkliczew@redhat.com> - 0.2.0
 - use brew maven-build
 

@@ -1,6 +1,5 @@
 ---
 distributions:
-  - el7
   - el8
   - fc30
 

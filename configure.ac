@@ -47,8 +47,7 @@ AC_ARG_WITH(
 
 AC_ARG_WITH(
 	[dist_only],
-	[AS_HELP_STRING([--with-dist-only], [configure to enable source only distibution (e.g. make dist) @<:@default=no@:>@])],
-	[enable_java_build="no",with_maven="no"],
+	[AS_HELP_STRING([--with-dist-only], [configure to enable source only distribution (e.g. make dist) @<:@default=no@:>@])],
 	[with_dist_only="no"],
 )
 
@@ -57,25 +56,12 @@ AC_PROG_SED
 AC_PROG_MAKE_SET
 AC_PROG_MKDIR_P
 
-if test ! "${with_maven}" = "no"; then
-AC_ARG_VAR([MVN], [path to mvn utility])
-AC_CHECK_PROGS([MVN], [mvn])
-fi
-AC_ARG_VAR([JAVAC], [path to java compiler])
-AC_CHECK_PROGS([JAVAC], [javac])
-AC_ARG_VAR([jar], [path to jar utility])
-AC_CHECK_PROGS([JAR], [jar])
-
 if test ! "${with_dist_only}" = "yes"; then
-	if test "${with_maven}" = "yes"; then
-		test -z "${MVN}" && \
-			AC_MSG_ERROR([maven is required but not found])
-	else
-		test -z "${JAVAC}" && \
-			AC_MSG_ERROR([javac is required but not found])
-		test -z "${JAR}" && \
-			AC_MSG_ERROR([jar is required but not found])
-	fi
+	    AC_ARG_VAR([MVN], [path to mvn utility])
+        AC_CHECK_PROGS([MVN], [mvn])
+
+    	test -z "${MVN}" && \
+    		AC_MSG_ERROR([maven is required but not found])
 fi
 
 if test "${with_maven_version_snapshot}" = "no"; then

@@ -34,13 +34,13 @@ MAINTAINERCLEANFILES = \
 	$(NULL)
 
 EXTRA_DIST = \
-	$(srcdir)/src/main/resources/toolchains.xml \
 	$(srcdir)/pom.xml \
 	.gitignore \
 	$(NULL)
 
 dist_noinst_DATA = \
 	java-client-kubevirt.spec \
+    src \
 	$(NULL)
 
 clean-local:
@@ -51,3 +51,5 @@ all-local:
 	$(MVN) dependency:resolve
 
 all-local: dist
+
+

@@ -22,13 +22,6 @@
 
 %global	_java_jdk_home /usr/lib/jvm/java-11-openjdk
 
-
-%if 0%{?rhel} == 7
-# xmvn in 3.x  version is not compatible with JDK 11, bugzilla https://bugzilla.redhat.com/show_bug.cgi?id=1761381
-# due to it maven toolchain plugin is used to run xmvn with java 1.8 but use 11 for build and compilation
-%global	_mvn_opts -Ptoolchain -gt src/main/resources/toolchains.xml
-%endif
-
 Summary:	Kubevirt java client (%{name}) for oVirt
 Name:		@PACKAGE_NAME@
 Version:	@PACKAGE_RPM_VERSION@
@@ -43,25 +36,15 @@ BuildArch:	noarch
 BuildRequires:	gcc
 BuildRequires:	java-11-openjdk-devel >= 11.0.4
 
-%if 0%{?rhel} == 7
-BuildRequires:	java-1.8.0-openjdk-headless >= 1:1.8.0
-BuildRequires:	rh-maven35-maven
-BuildRequires:	rh-maven35-maven-profile
-BuildRequires:	rh-maven35-maven-compiler-plugin
-BuildRequires:	rh-maven35-maven-javadoc
-BuildRequires:	rh-maven35-maven-local
-BuildRequires:	rh-maven35-maven-shade-plugin
-BuildRequires:	rh-maven35-maven-source-plugin
-BuildRequires:  rh-maven35-maven-plugin-registry
-%else
+
 BuildRequires:	javapackages-local
 BuildRequires:	maven >= 3.5.0
+BuildRequires:  maven-local
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
 BuildRequires:  maven-compiler-plugin
 BuildRequires:  maven-profile
 BuildRequires:  maven-plugin-registry
-%endif
 
 # All are provided by our fat jar
 Provides:	mvn(io.kubernetes:client-java) = 6.0.1
@@ -71,6 +54,13 @@ Provides:	mvn(javax.annotation:javax.annotation-api) = 1.3.2
 %description
 java client kubevirt
 
+%package javadoc
+Summary:	Java-docs for %{name}
+Group:		Documentation
+
+%description javadoc
+This package contains the API documentation for %{name}.
+
 %prep
 %setup -q -n %{name}-%{package_version}
 %if 0%{?rhel} > 7
@@ -79,23 +69,15 @@ java client kubevirt
 %endif
 
 %build
-%configure --with-maven --disable-java-build MVN="xmvn"
+%configure MVN="xmvn"
+# this step is necessary to resolve mvn dependencies that are not available
+# as RPM distribution
 make %{?_smp_mflags}
 
-%if 0%{?rhel} != 7
 # necessary because jdk 1.8 comes as default with xmvn
 export JAVA_HOME="%{_java_jdk_home}"
-%endif
 
-%if 0%{?rhel} == 7
-# xmvn bootstrap enabled because maven toolchain plugin dependency
-# is not accessible even when installed as rpm (still not sure why),
-# leaving it as it is because once xmvn is upgraded then toolchain can be removed
-%mvn_build -ib -- %{?_mvn_opts}
-%else
 %mvn_build -i -- %{?_mvn_opts}
-%endif
-
 %mvn_artifact dependency-reduced-pom.xml target/@PACKAGE_NAME@-%{version}.jar
 
 %install
@@ -103,6 +85,8 @@ export JAVA_HOME="%{_java_jdk_home}"
 
 %files -f .mfiles
 %dir %{_javadir}/%{name}
+
+%files javadoc -f .mfiles-javadoc
 
 %changelog
 * Thu Feb 20 2020 Moti Asayag <masayag@redhat.com> - 0.3.0

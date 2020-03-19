@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import kubevirt.io.V1LabelSelector;
-import kubevirt.io.V1PersistentVolumeAccessMode;
 import kubevirt.io.V1PersistentVolumeMode;
 import kubevirt.io.V1ResourceRequirements;
 import kubevirt.io.V1TypedLocalObjectReference;
@@ -38,7 +37,7 @@ import kubevirt.io.V1TypedLocalObjectReference;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-10T14:44:51.030+02:00")
 public class V1PersistentVolumeClaimSpec {
   @SerializedName("accessModes")
-  private List<V1PersistentVolumeAccessMode> accessModes = null;
+  private List<String> accessModes = null;
 
   @SerializedName("dataSource")
   private V1TypedLocalObjectReference dataSource = null;
@@ -58,12 +57,12 @@ public class V1PersistentVolumeClaimSpec {
   @SerializedName("volumeName")
   private String volumeName = null;
 
-  public V1PersistentVolumeClaimSpec accessModes(List<V1PersistentVolumeAccessMode> accessModes) {
+  public V1PersistentVolumeClaimSpec accessModes(List<String> accessModes) {
     this.accessModes = accessModes;
     return this;
   }
 
-  public V1PersistentVolumeClaimSpec addAccessModesItem(V1PersistentVolumeAccessMode accessModesItem) {
+  public V1PersistentVolumeClaimSpec addAccessModesItem(String accessModesItem) {
     if (this.accessModes == null) {
       this.accessModes = new ArrayList<>();
     }
@@ -76,11 +75,11 @@ public class V1PersistentVolumeClaimSpec {
    * @return accessModes
   **/
   @ApiModelProperty(value = "AccessModes contains the desired access modes the volume should have. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#access-modes-1")
-  public List<V1PersistentVolumeAccessMode> getAccessModes() {
+  public List<String> getAccessModes() {
     return accessModes;
   }
 
-  public void setAccessModes(List<V1PersistentVolumeAccessMode> accessModes) {
+  public void setAccessModes(List<String> accessModes) {
     this.accessModes = accessModes;
   }
 

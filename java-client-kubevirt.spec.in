@@ -89,6 +89,9 @@ export JAVA_HOME="%{_java_jdk_home}"
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Thu Mar 19 2020 Piotr Kliczewski <pkliczew@redhat.com = 0.4.0
+- Update kubevirt api definition
+
 * Thu Feb 20 2020 Moti Asayag <masayag@redhat.com> - 0.3.0
 - Add support for network attachment definitions
 

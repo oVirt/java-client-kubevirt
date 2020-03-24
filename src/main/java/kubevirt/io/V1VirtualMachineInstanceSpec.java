@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import kubevirt.io.V1Affinity;
 import kubevirt.io.V1DomainSpec;
-import kubevirt.io.V1EvictionStrategy;
 import kubevirt.io.V1Network;
 import kubevirt.io.V1PodDNSConfig;
 import kubevirt.io.V1Probe;
@@ -53,7 +52,7 @@ public class V1VirtualMachineInstanceSpec {
   private V1DomainSpec domain = null;
 
   @SerializedName("evictionStrategy")
-  private V1EvictionStrategy evictionStrategy = null;
+  private String evictionStrategy = null;
 
   @SerializedName("hostname")
   private String hostname = null;
@@ -154,7 +153,7 @@ public class V1VirtualMachineInstanceSpec {
     this.domain = domain;
   }
 
-  public V1VirtualMachineInstanceSpec evictionStrategy(V1EvictionStrategy evictionStrategy) {
+  public V1VirtualMachineInstanceSpec evictionStrategy(String evictionStrategy) {
     this.evictionStrategy = evictionStrategy;
     return this;
   }
@@ -164,11 +163,11 @@ public class V1VirtualMachineInstanceSpec {
    * @return evictionStrategy
   **/
   @ApiModelProperty(value = "EvictionStrategy can be set to \"LiveMigrate\" if the VirtualMachineInstance should be migrated instead of shut-off in case of a node drain.")
-  public V1EvictionStrategy getEvictionStrategy() {
+  public String getEvictionStrategy() {
     return evictionStrategy;
   }
 
-  public void setEvictionStrategy(V1EvictionStrategy evictionStrategy) {
+  public void setEvictionStrategy(String evictionStrategy) {
     this.evictionStrategy = evictionStrategy;
   }
 

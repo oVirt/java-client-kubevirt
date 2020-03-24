@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import kubevirt.io.V1LabelSelector;
-import kubevirt.io.V1PersistentVolumeMode;
 import kubevirt.io.V1ResourceRequirements;
 import kubevirt.io.V1TypedLocalObjectReference;
 
@@ -52,7 +51,7 @@ public class V1PersistentVolumeClaimSpec {
   private String storageClassName = null;
 
   @SerializedName("volumeMode")
-  private V1PersistentVolumeMode volumeMode = null;
+  private String volumeMode = null;
 
   @SerializedName("volumeName")
   private String volumeName = null;
@@ -155,7 +154,7 @@ public class V1PersistentVolumeClaimSpec {
     this.storageClassName = storageClassName;
   }
 
-  public V1PersistentVolumeClaimSpec volumeMode(V1PersistentVolumeMode volumeMode) {
+  public V1PersistentVolumeClaimSpec volumeMode(String volumeMode) {
     this.volumeMode = volumeMode;
     return this;
   }
@@ -165,11 +164,11 @@ public class V1PersistentVolumeClaimSpec {
    * @return volumeMode
   **/
   @ApiModelProperty(value = "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is a beta feature.")
-  public V1PersistentVolumeMode getVolumeMode() {
+  public String getVolumeMode() {
     return volumeMode;
   }
 
-  public void setVolumeMode(V1PersistentVolumeMode volumeMode) {
+  public void setVolumeMode(String volumeMode) {
     this.volumeMode = volumeMode;
   }
 

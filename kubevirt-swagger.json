@@ -4897,7 +4897,6 @@
      }
     }
    },
-   "v1.EvictionStrategy": {},
    "v1.FeatureAPIC": {
     "properties": {
      "enabled": {
@@ -5696,7 +5695,7 @@
      },
      "volumeMode": {
       "description": "volumeMode defines what type of volume is required by the claim. Value of Filesystem is implied when not included in claim spec. This is a beta feature.",
-      "$ref": "#/definitions/v1.PersistentVolumeMode"
+      "type": "string"
      },
      "volumeName": {
       "description": "VolumeName is the binding reference to the PersistentVolume backing this claim.",
@@ -5720,7 +5719,6 @@
      }
     }
    },
-   "v1.PersistentVolumeMode": {},
    "v1.PodAffinity": {
     "description": "Pod affinity is a group of inter pod affinity scheduling rules.",
     "properties": {
@@ -6768,7 +6766,7 @@
      },
      "evictionStrategy": {
       "description": "EvictionStrategy can be set to \"LiveMigrate\" if the VirtualMachineInstance should be\nmigrated instead of shut-off in case of a node drain.",
-      "$ref": "#/definitions/v1.EvictionStrategy"
+      "type": "string"
      },
      "hostname": {
       "description": "Specifies the hostname of the vmi\nIf not specified, the hostname will be set to the name of the vmi, if dhcp or cloud-init is configured properly.\n+optional",

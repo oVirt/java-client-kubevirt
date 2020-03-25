@@ -23,7 +23,6 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import kubevirt.io.V1ClockOffsetTimezone;
 import kubevirt.io.V1ClockOffsetUTC;
 import kubevirt.io.V1Timer;
 
@@ -37,7 +36,7 @@ public class V1Clock {
   private V1Timer timer = null;
 
   @SerializedName("timezone")
-  private V1ClockOffsetTimezone timezone = null;
+  private String timezone = null;
 
   @SerializedName("utc")
   private V1ClockOffsetUTC utc = null;
@@ -60,7 +59,7 @@ public class V1Clock {
     this.timer = timer;
   }
 
-  public V1Clock timezone(V1ClockOffsetTimezone timezone) {
+  public V1Clock timezone(String timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -70,11 +69,11 @@ public class V1Clock {
    * @return timezone
   **/
   @ApiModelProperty(value = "Timezone sets the guest clock to the specified timezone. Zone name follows the TZ environment variable format (e.g. 'America/New_York').")
-  public V1ClockOffsetTimezone getTimezone() {
+  public String getTimezone() {
     return timezone;
   }
 
-  public void setTimezone(V1ClockOffsetTimezone timezone) {
+  public void setTimezone(String timezone) {
     this.timezone = timezone;
   }
 

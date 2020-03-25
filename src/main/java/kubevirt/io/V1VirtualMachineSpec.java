@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import kubevirt.io.V1VirtualMachineInstanceTemplateSpec;
-import kubevirt.io.V1VirtualMachineRunStrategy;
 import kubevirt.io.V1alpha1DataVolume;
 
 /**
@@ -39,7 +38,7 @@ public class V1VirtualMachineSpec {
   private List<V1alpha1DataVolume> dataVolumeTemplates = null;
 
   @SerializedName("runStrategy")
-  private V1VirtualMachineRunStrategy runStrategy = null;
+  private String runStrategy = null;
 
   @SerializedName("running")
   private Boolean running = null;
@@ -73,7 +72,7 @@ public class V1VirtualMachineSpec {
     this.dataVolumeTemplates = dataVolumeTemplates;
   }
 
-  public V1VirtualMachineSpec runStrategy(V1VirtualMachineRunStrategy runStrategy) {
+  public V1VirtualMachineSpec runStrategy(String runStrategy) {
     this.runStrategy = runStrategy;
     return this;
   }
@@ -83,11 +82,11 @@ public class V1VirtualMachineSpec {
    * @return runStrategy
   **/
   @ApiModelProperty(value = "Running state indicates the requested running state of the VirtualMachineInstance mutually exclusive with Running")
-  public V1VirtualMachineRunStrategy getRunStrategy() {
+  public String getRunStrategy() {
     return runStrategy;
   }
 
-  public void setRunStrategy(V1VirtualMachineRunStrategy runStrategy) {
+  public void setRunStrategy(String runStrategy) {
     this.runStrategy = runStrategy;
   }
 

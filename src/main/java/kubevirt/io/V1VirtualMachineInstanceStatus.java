@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import kubevirt.io.V1PodQOSClass;
 import kubevirt.io.V1VirtualMachineInstanceCondition;
 import kubevirt.io.V1VirtualMachineInstanceGuestOSInfo;
 import kubevirt.io.V1VirtualMachineInstanceMigrationState;

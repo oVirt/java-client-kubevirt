@@ -29,7 +29,6 @@ import kubevirt.io.V1Clock;
 import kubevirt.io.V1Devices;
 import kubevirt.io.V1Features;
 import kubevirt.io.V1Firmware;
-import kubevirt.io.V1IOThreadsPolicy;
 import kubevirt.io.V1Machine;
 import kubevirt.io.V1Memory;
 import kubevirt.io.V1ResourceRequirements;
@@ -58,7 +57,7 @@ public class V1DomainSpec {
   private V1Firmware firmware = null;
 
   @SerializedName("ioThreadsPolicy")
-  private V1IOThreadsPolicy ioThreadsPolicy = null;
+  private String ioThreadsPolicy = null;
 
   @SerializedName("machine")
   private V1Machine machine = null;
@@ -177,7 +176,7 @@ public class V1DomainSpec {
     this.firmware = firmware;
   }
 
-  public V1DomainSpec ioThreadsPolicy(V1IOThreadsPolicy ioThreadsPolicy) {
+  public V1DomainSpec ioThreadsPolicy(String ioThreadsPolicy) {
     this.ioThreadsPolicy = ioThreadsPolicy;
     return this;
   }
@@ -187,11 +186,11 @@ public class V1DomainSpec {
    * @return ioThreadsPolicy
   **/
   @ApiModelProperty(value = "Controls whether or not disks will share IOThreads. Omitting IOThreadsPolicy disables use of IOThreads. One of: shared, auto +optional")
-  public V1IOThreadsPolicy getIoThreadsPolicy() {
+  public String getIoThreadsPolicy() {
     return ioThreadsPolicy;
   }
 
-  public void setIoThreadsPolicy(V1IOThreadsPolicy ioThreadsPolicy) {
+  public void setIoThreadsPolicy(String ioThreadsPolicy) {
     this.ioThreadsPolicy = ioThreadsPolicy;
   }
 

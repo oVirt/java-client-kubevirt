@@ -25,7 +25,6 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import kubevirt.io.V1DeletionPropagation;
 import kubevirt.io.V1Preconditions;
 
 /**
@@ -53,7 +52,7 @@ public class V1DeleteOptions {
   private V1Preconditions preconditions = null;
 
   @SerializedName("propagationPolicy")
-  private V1DeletionPropagation propagationPolicy = null;
+  private String propagationPolicy = null;
 
   public V1DeleteOptions apiVersion(String apiVersion) {
     this.apiVersion = apiVersion;
@@ -171,7 +170,7 @@ public class V1DeleteOptions {
     this.preconditions = preconditions;
   }
 
-  public V1DeleteOptions propagationPolicy(V1DeletionPropagation propagationPolicy) {
+  public V1DeleteOptions propagationPolicy(String propagationPolicy) {
     this.propagationPolicy = propagationPolicy;
     return this;
   }
@@ -181,11 +180,11 @@ public class V1DeleteOptions {
    * @return propagationPolicy
   **/
   @ApiModelProperty(value = "Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.")
-  public V1DeletionPropagation getPropagationPolicy() {
+  public String getPropagationPolicy() {
     return propagationPolicy;
   }
 
-  public void setPropagationPolicy(V1DeletionPropagation propagationPolicy) {
+  public void setPropagationPolicy(String propagationPolicy) {
     this.propagationPolicy = propagationPolicy;
   }
 

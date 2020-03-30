@@ -89,6 +89,10 @@ export JAVA_HOME="%{_java_jdk_home}"
 %files javadoc -f .mfiles-javadoc
 
 %changelog
+* Mon Mar 30 2020 Piotr Kliczewski <pkliczew@redhat.com = 0.5.0
+- types: EvictionStrategy and VolumeMode wrongly defined as types
+- types: More types wrongly defined in api definition
+
 * Thu Mar 19 2020 Piotr Kliczewski <pkliczew@redhat.com = 0.4.0
 - Update kubevirt api definition
 

@@ -14,7 +14,7 @@ plugins {
 }
 
 group = "org.ovirt.java-client-kubevirt"
-version = "0.0.11"
+version = "0.0.12"
 
 shadowJar {
     classifier = null

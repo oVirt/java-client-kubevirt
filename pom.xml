@@ -75,7 +75,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <io.k8s.version>6.0.1</io.k8s.version>
+    <io.k8s.version>9.0.2</io.k8s.version>
     <javax.annotation.version>1.3.2</javax.annotation.version>
     <io.gsonfire.version>1.8.3</io.gsonfire.version>
   </properties>

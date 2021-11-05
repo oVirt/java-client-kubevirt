@@ -1,5 +1,7 @@
 # Kubevirt java client (java-client-kubevirt) for oVirt
 
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/java-client-kubevirt/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/ovirt/ovirt-master-snapshot/package/java-client-kubevirt/)
+
 Welcome to the Kubevirt Java client (java-client-kubevirt) for oVirt source repository.
 
 This repository is hosted on [gerrit.ovirt.org:java-client-kubevirt](https://gerrit.ovirt.org/#/admin/projects/java-client-kubevirt)

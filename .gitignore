@@ -1,6 +1,11 @@
 # Ignore Gradle project-specific cache directory
 .gradle
 
+# Intellij IDEA project files
+.idea/
+*.iml
+*.ipr
+
 # Ignore Gradle build output directory
 build
 
@@ -18,4 +23,7 @@ _out
 /config.status
 /java-client-kubevirt.spec
 /missing
+rpmbuild
 
+# Distribution tarballs
+*.tar.gz

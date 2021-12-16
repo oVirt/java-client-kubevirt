@@ -10,8 +10,6 @@ installdeps:
 		git \
 		java-11-openjdk-devel \
 		make \
-		maven-profile \
-		maven-plugin-registry \
 		maven-source-plugin \
 		maven-shade-plugin \
 		maven \

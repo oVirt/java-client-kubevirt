@@ -3,7 +3,7 @@
 source $(dirname "$(readlink -f "$0")")/build-srpm.sh
 
 # Install build dependencies
-#dnf builddep -y rpmbuild/SRPMS/*src.rpm
+dnf builddep -y rpmbuild/SRPMS/*src.rpm
 
 # Build binary package
 rpmbuild \

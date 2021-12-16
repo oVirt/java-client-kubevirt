@@ -48,7 +48,7 @@ clean-local:
 	$(MVN) clean
 
 all-local:
-	$(MVN) dependency:resolve
+	$(MVN) package
 
 all-local: dist
 

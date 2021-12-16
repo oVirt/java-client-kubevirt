@@ -39,12 +39,10 @@ BuildRequires:	java-11-openjdk-devel >= 11.0.4
 
 BuildRequires:	javapackages-local
 BuildRequires:	maven >= 3.5.0
-BuildRequires:  maven-local
+BuildRequires:	maven-local
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
-BuildRequires:  maven-compiler-plugin
-BuildRequires:  maven-profile
-BuildRequires:  maven-plugin-registry
+BuildRequires:	maven-compiler-plugin
 
 # All are provided by our fat jar
 Provides:	mvn(io.kubernetes:client-java) = 6.0.1

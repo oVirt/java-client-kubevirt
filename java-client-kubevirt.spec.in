@@ -40,6 +40,7 @@ BuildRequires:	java-11-openjdk-devel >= 11.0.4
 BuildRequires:	javapackages-local
 BuildRequires:	maven >= 3.5.0
 BuildRequires:	maven-local
+BuildRequires:	maven-dependency-plugin
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
 BuildRequires:	maven-compiler-plugin

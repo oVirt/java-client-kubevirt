@@ -7,6 +7,7 @@ installdeps:
 		createrepo_c \
 		dnf-utils \
 		findutils \
+		gcc \
 		git \
 		java-11-openjdk-devel \
 		make \

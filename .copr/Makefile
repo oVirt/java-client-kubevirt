@@ -1,4 +1,4 @@
-.PHONY: installdeps srpm
+.PHONY: installdeps srpm git-safe
 
 installdeps:
 	dnf install -y \
@@ -18,7 +18,12 @@ installdeps:
 		sed
 
 
-srpm: installdeps
+# explicity mark the copr generated git repo directory (which is done prior to the mock
+# call to the make_srpm and will be the current pwd) as safe for git commands
+git-safe:
+	git config --global --add safe.directory "$(shell pwd)"
+
+srpm: installdeps git-safe
 	$(eval SUFFIX=$(shell sh -c " echo '.$$(date -u +%Y%m%d%H%M%S).git$$(git rev-parse --short HEAD)'"))
 	# changing the spec file as passing -D won't preserve the suffix when rebuilding in mock
 	sed "s:%{?release_suffix}:${SUFFIX}:" -i java-client-kubevirt.spec.in

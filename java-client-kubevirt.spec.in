@@ -52,7 +52,7 @@ BuildRequires:	maven-resolver-connector-basic
 BuildRequires:	maven-resolver-transport-wagon
 
 # All are provided by our fat jar
-Provides:	mvn(io.kubernetes:client-java) = 6.0.1
+Provides:	mvn(io.kubernetes:client-java) = 15.0.1
 Provides:	mvn(io.gsonfire:gson-fire) = 1.8.3
 Provides:	mvn(javax.annotation:javax.annotation-api) = 1.3.2
 

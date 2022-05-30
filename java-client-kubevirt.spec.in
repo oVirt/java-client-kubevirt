@@ -45,6 +45,7 @@ BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
 BuildRequires:	maven-compiler-plugin
 BuildRequires:	maven-clean-plugin
+BuildRequires:	maven-install-plugin
 
 # All are provided by our fat jar
 Provides:	mvn(io.kubernetes:client-java) = 6.0.1

@@ -69,12 +69,12 @@ This package contains the API documentation for %{name}.
 
 %build
 %configure MVN="xmvn"
+# Force using OpenJDK 11
+export JAVA_HOME="%{_java_jdk_home}"
+
 # this step is necessary to resolve mvn dependencies that are not available
 # as RPM distribution
 make %{?_smp_mflags}
-
-# necessary because jdk 1.8 comes as default with xmvn
-export JAVA_HOME="%{_java_jdk_home}"
 
 %mvn_build -i -X -d -- %{?_mvn_opts}
 %mvn_artifact dependency-reduced-pom.xml target/@PACKAGE_NAME@-%{version}.jar

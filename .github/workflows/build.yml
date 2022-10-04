@@ -23,15 +23,15 @@ jobs:
 
     name: ${{ matrix.name }}
 
+    env:
+      ARTIFACTS_DIR: exported-artifacts
+
     container:
       image: quay.io/ovirt/buildcontainer:${{ matrix.container-name }}
 
     steps:
     - name: Checkout sources
       uses: actions/checkout@v2
-
-    - name: Set up artifacts directory
-      run: echo "ARTIFACTS_DIR=exported-artifacts/build$(rpm -E '%{?dist}')" >> $GITHUB_ENV
 
     - name: Perform build
       run: |

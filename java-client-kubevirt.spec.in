@@ -20,8 +20,6 @@
 %global	package_version @PACKAGE_VERSION@
 %global	package_maven_version @PACKAGE_MAVEN_VERSION@
 
-%global	_java_jdk_home /usr/lib/jvm/java-11-openjdk
-
 Summary:	Kubevirt java client (%{name}) for oVirt
 Name:		@PACKAGE_NAME@
 Version:	@PACKAGE_RPM_VERSION@
@@ -34,18 +32,16 @@ Group:		Development/Libraries
 BuildArch:	noarch
 
 BuildRequires:	gcc
-BuildRequires:	java-11-openjdk-devel >= 11.0.4
+BuildRequires:	(java-11-openjdk or java-21-openjdk-devel)
 
 
 BuildRequires:	javapackages-local
 BuildRequires:	maven >= 3.5.0
-BuildRequires:	maven-local
+BuildRequires:	maven-local-openjdk21
 BuildRequires:	maven-dependency-plugin
 BuildRequires:	maven-shade-plugin
 BuildRequires:	maven-source-plugin
 BuildRequires:	maven-compiler-plugin
-BuildRequires:	maven-clean-plugin
-BuildRequires:	maven-install-plugin
 # A few depencies are not yet packaged. Allowing xmvn to fetch them
 BuildRequires:	maven-wagon-http
 BuildRequires:	maven-resolver-connector-basic
@@ -75,8 +71,6 @@ This package contains the API documentation for %{name}.
 
 %build
 %configure MVN="xmvn"
-# Force using OpenJDK 11
-export JAVA_HOME="%{_java_jdk_home}"
 
 # this step is necessary to resolve mvn dependencies that are not available
 # as RPM distribution

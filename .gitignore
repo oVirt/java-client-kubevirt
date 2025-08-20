@@ -27,3 +27,6 @@ rpmbuild
 
 # Distribution tarballs
 *.tar.gz
+
+# Pom file is generated so ignore it
+/pom.xml

@@ -38,9 +38,9 @@ build shadow jar:
 ./gradlew shadowJar
 ```
 
-publish to mavem local:
+publish to maven central:
 ```
-./gradlew uploadShadow
+mvn deploy -Psign
 ```
 
 generate kubevirt sources (model + api):

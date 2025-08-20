@@ -36,9 +36,9 @@
     </license>
   </licenses>
   <scm>
-    <connection>scm:git://gerrit.ovirt.org/@PACKAGE_NAME@</connection>
-    <developerConnection>scm:git:gerrit.ovirt.org:@PACKAGE_NAME@</developerConnection>
-    <url>http://gerrit.ovirt.org/gitweb?p=@PACKAGE_NAME@.git</url>
+    <connection>scm:git@github.com:oVirt/java-client-kubevirt.git</connection>
+    <developerConnection>scm:git@github.com:oVirt/java-client-kubevirt.git</developerConnection>
+    <url>https://github.com/oVirt/java-client-kubevirt</url>
   </scm>
   <packaging>jar</packaging>
   <developers>
@@ -58,19 +58,6 @@
       <email>pkliczew@redhat.com</email>
     </developer>
   </developers>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>sonatype-nexus-snapshots</id>
-      <name>Sonatype Nexus Snapshots</name>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-    </snapshotRepository>
-    <repository>
-      <id>sonatype-nexus-staging</id>
-      <name>Nexus Release Repository</name>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
 
   <repositories>
     <repository>
@@ -135,7 +122,7 @@
 
   <profiles>
     <profile>
-      <id>release-sign-artifacts</id>
+      <id>sign</id>
       <activation>
         <property>
         <name>performRelease</name>
@@ -226,6 +213,15 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.8.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+        </configuration>
       </plugin>
     </plugins>
     <finalName>${project.artifactId}-${project.version}</finalName>

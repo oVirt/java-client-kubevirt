@@ -9,7 +9,7 @@ installdeps:
 		findutils \
 		gcc \
 		git \
-		java-11-openjdk-devel \
+		java-21-openjdk-devel \
 		make \
 		maven-source-plugin \
 		maven-shade-plugin \

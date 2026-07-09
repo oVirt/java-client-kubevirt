@@ -38,6 +38,27 @@ EXTRA_DIST = \
 	.gitignore \
 	$(NULL)
 
+TMPREPOS = tmp.repos
+RPMBUILD_ARGS := --define="_topdir `pwd`/$(TMPREPOS)"
+RPMBUILD_ARGS += $(if $(RELEASE_SUFFIX),--define="release_suffix $(RELEASE_SUFFIX)")
+
+rpm: srpm
+	dnf builddep -y "$(TMPREPOS)"/SRPMS/*.src.rpm
+	rpmbuild $(RPMBUILD_ARGS) --rebuild "$(TMPREPOS)"/SRPMS/*.src.rpm
+	cp $(distdir).tar.gz $(TMPREPOS)/SOURCES/
+	@echo
+	@echo "rpm available at '$(TMPREPOS)'"
+	@echo
+
+srpm: dist
+	rm -rf "$(TMPREPOS)"
+	mkdir -vp $(TMPREPOS)/{SPECS,RPMS,SRPMS,SOURCES}
+	rpmbuild $(RPMBUILD_ARGS) -ts $(distdir).tar.gz
+	@echo
+	@echo "srpm available at '$(TMPREPOS)'"
+
+.PHONY: rpm srpm
+
 dist_noinst_DATA = \
 	java-client-kubevirt.spec \
     src \
